@@ -1,12 +1,12 @@
 package test.technical.agregio.service;
 
 import org.springframework.stereotype.Service;
-import test.technical.agregio.rest.exception.ResourceNotFoundException;
 import test.technical.agregio.dao.ProviderDao;
 import test.technical.agregio.model.Provider;
 import test.technical.agregio.model.dto.ProviderCreationDto;
 import test.technical.agregio.model.dto.ProviderDto;
 import test.technical.agregio.model.mapper.ProviderMapper;
+import test.technical.agregio.rest.exception.ResourceNotFoundException;
 
 @Service
 public class ProviderService {
@@ -32,6 +32,6 @@ public class ProviderService {
     }
 
     protected Provider getProviderById(Long id) {
-        return providerDao.findById(id).orElseThrow(() -> new ResourceNotFoundException("Provider with id " + id + "not found"));
+        return providerDao.findById(id).orElseThrow(() -> new ResourceNotFoundException("Provider with id " + id + " not found"));
     }
 }
