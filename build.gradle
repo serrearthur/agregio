@@ -20,6 +20,7 @@ repositories {
 
 ext {
     set('testcontainersVersion', "1.17.6")
+    set('mapstructVersion', "1.5.4.Final")
 }
 
 dependencies {
@@ -27,17 +28,22 @@ dependencies {
     implementation 'org.springframework.boot:spring-boot-starter-security'
     implementation 'org.springframework.boot:spring-boot-starter-web'
     implementation 'org.liquibase:liquibase-core'
-    implementation 'org.yaml:snakeyaml:2.0'
     implementation 'org.springframework.session:spring-session-core'
-    compileOnly 'org.projectlombok:lombok'
-    developmentOnly 'org.springframework.boot:spring-boot-devtools'
-    runtimeOnly 'org.postgresql:postgresql'
+    implementation "org.mapstruct:mapstruct:${mapstructVersion}"
+    implementation 'org.springframework.boot:spring-boot-starter-validation'
+
     annotationProcessor 'org.springframework.boot:spring-boot-configuration-processor'
     annotationProcessor 'org.projectlombok:lombok'
+    annotationProcessor "org.mapstruct:mapstruct-processor:${mapstructVersion}"
+
     testImplementation 'org.springframework.boot:spring-boot-starter-test'
     testImplementation 'org.springframework.security:spring-security-test'
     testImplementation 'org.testcontainers:junit-jupiter'
     testImplementation 'org.testcontainers:postgresql'
+
+    compileOnly 'org.projectlombok:lombok'
+    developmentOnly 'org.springframework.boot:spring-boot-devtools'
+    runtimeOnly 'org.postgresql:postgresql'
 }
 
 dependencyManagement {

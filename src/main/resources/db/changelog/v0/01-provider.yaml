@@ -1,0 +1,40 @@
+databaseChangeLog:
+  - changeSet:
+      id: "create provider table"
+      author: Arthur
+      changes:
+        - createTable:
+            tableName: provider
+            columns:
+              - column:
+                  name: id
+                  type: int
+                  autoIncrement: true
+                  constraints:
+                    primaryKey: true
+                    nullable: false
+
+              - column:
+                  name: name
+                  type: varchar(255)
+                  constraints:
+                    nullable: false
+
+              - column:
+                  name: energy_type
+                  type: varchar(255)
+                  constraints:
+                    nullable: false
+
+        - createSequence:
+            sequenceName: provider_sequence
+
+  - changeSet:
+      id: "create provider indexes"
+      author: Arthur
+      changes:
+        - createIndex:
+            indexName: idx_provider_energy_type
+            tableName: provider
+            column:
+              name: energy_type

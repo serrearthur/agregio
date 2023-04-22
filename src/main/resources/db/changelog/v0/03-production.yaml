@@ -1,0 +1,43 @@
+databaseChangeLog:
+  - changeSet:
+      id: "create production table"
+      author: Arthur
+      changes:
+        - createTable:
+            tableName: production
+            columns:
+              - column:
+                  name: id
+                  type: int
+                  autoIncrement: true
+                  constraints:
+                    primaryKey: true
+                    nullable: false
+
+              - column:
+                  name: amount_produced
+                  type: numeric
+                  defaultOnNull: true
+                  defaultValueNumeric: 0
+
+              - column:
+                  name: minimal_retail_value
+                  type: numeric
+                  defaultOnNull: true
+                  defaultValueNumeric: 0
+
+              - column:
+                  name: provider_id
+                  type: int
+                  constraints:
+                    foreignKeyName: fk_production_provider
+                    references: provider(id)
+                    nullable: false
+
+              - column:
+                  name: time_block_id
+                  type: int
+                  constraints:
+                    foreignKeyName: fk_production_time_block
+                    references: time_block(id)
+                    nullable: false

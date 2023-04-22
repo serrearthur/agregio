@@ -1,0 +1,27 @@
+databaseChangeLog:
+  - changeSet:
+      id: "create time_block table"
+      author: Arthur
+      changes:
+        - createTable:
+            tableName: time_block
+            columns:
+              - column:
+                  name: id
+                  type: int
+                  autoIncrement: true
+                  constraints:
+                    primaryKey: true
+                    nullable: false
+
+              - column:
+                  name: start_time
+                  type: time with time zone
+                  constraints:
+                    nullable: false
+
+              - column:
+                  name: end_time
+                  type: time with time zone
+                  constraints:
+                    nullable: false
