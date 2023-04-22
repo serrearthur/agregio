@@ -1,0 +1,53 @@
+databaseChangeLog:
+  - changeSet:
+      id: "added offer table"
+      author: Arthur
+      changes:
+        - createSequence:
+            sequenceName: offer_sequence
+
+        - createTable:
+            tableName: offer
+            columns:
+              - column:
+                  name: id
+                  type: int
+                  autoIncrement: true
+                  constraints:
+                    primaryKey: true
+                    nullable: false
+
+              - column:
+                  name: reference
+                  type: varchar(255)
+
+  - changeSet:
+      id: "added offer_timeblock_provider join table"
+      author: Arthur
+      changes:
+        - createTable:
+            tableName: offer_timeblock_provider
+            columns:
+              - column:
+                  name: time_block_id
+                  type: int
+                  constraints:
+                    foreignKeyName: fk_timeblock_offertimeblockprovider
+                    references: time_block(id)
+                    nullable: false
+
+              - column:
+                  name: offer_id
+                  type: int
+                  constraints:
+                    foreignKeyName: fk_offer_offertimeblockprovider
+                    references: offer(id)
+                    nullable: false
+
+              - column:
+                  name: provider_id
+                  type: int
+                  constraints:
+                    foreignKeyName: fk_provider_offertimeblockprovider
+                    references: provider(id)
+                    nullable: false

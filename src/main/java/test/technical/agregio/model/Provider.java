@@ -14,6 +14,9 @@ import java.util.Set;
 @ToString
 @Builder
 public class Provider {
+    /**
+     * Un provider est un parc producteur d'électricité, ayant une production variant selon un bloc horaire.
+     */
 
     @Id
     @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "provider_generator")

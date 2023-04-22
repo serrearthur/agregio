@@ -14,6 +14,13 @@ import java.math.BigDecimal;
 @Builder
 public class Production {
 
+    /**
+     * Une production correspond a :
+     *  - un amountProduced d'éléctricité, en MW
+     *  - pendant un timeBlock précis
+     *  - avec un prix de vente minimal équivalent a la minimalRetailValue
+     */
+
     @Id
     @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "production_generator")
     @SequenceGenerator(name = "production_generator", sequenceName = "production_sequence", allocationSize = 1)
