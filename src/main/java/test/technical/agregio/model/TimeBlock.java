@@ -1,9 +1,6 @@
 package test.technical.agregio.model;
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.Id;
+import jakarta.persistence.*;
 import lombok.*;
 
 import java.time.OffsetTime;
@@ -18,7 +15,8 @@ import java.time.OffsetTime;
 public class TimeBlock {
 
     @Id
-    @GeneratedValue(strategy= GenerationType.AUTO)
+    @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "time_block_generator")
+    @SequenceGenerator(name = "time_block_generator", sequenceName = "time_block_sequence", allocationSize = 1)
     private long id;
 
     private OffsetTime startTime;

@@ -1,0 +1,9 @@
+databaseChangeLog:
+  - changeSet:
+      id: "added missing sequences on existing tables"
+      author: Arthur
+      changes:
+        - createSequence:
+            sequenceName: production_sequence
+        - createSequence:
+            sequenceName: time_block_sequence

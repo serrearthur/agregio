@@ -13,8 +13,8 @@ import org.springframework.test.web.servlet.request.MockMvcRequestBuilders;
 import org.springframework.test.web.servlet.result.MockMvcResultMatchers;
 import org.springframework.test.web.servlet.setup.MockMvcBuilders;
 import test.technical.agregio.model.EnergyType;
-import test.technical.agregio.model.dto.ProviderCreationDto;
 import test.technical.agregio.model.dto.ProviderDto;
+import test.technical.agregio.model.dto.creation.ProviderCreationDto;
 import test.technical.agregio.rest.exception.ResourceNotFoundException;
 import test.technical.agregio.service.ProviderService;
 
@@ -23,15 +23,12 @@ import static org.mockito.Mockito.when;
 @ExtendWith(MockitoExtension.class)
 class ProviderControllerTest {
 
+    private final ObjectMapper objectMapper = new ObjectMapper();
     @Mock
     private ProviderService providerService;
-
     @InjectMocks
     private ProviderController providerController;
-
     private MockMvc mockMvc;
-
-    private final ObjectMapper objectMapper = new ObjectMapper();
 
     @BeforeEach
     void init() {

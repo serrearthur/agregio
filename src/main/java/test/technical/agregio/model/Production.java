@@ -15,7 +15,8 @@ import java.math.BigDecimal;
 public class Production {
 
     @Id
-    @GeneratedValue(strategy= GenerationType.AUTO)
+    @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "production_generator")
+    @SequenceGenerator(name = "production_generator", sequenceName = "production_sequence", allocationSize = 1)
     private long id;
 
     @ManyToOne(fetch = FetchType.LAZY)
@@ -23,12 +24,15 @@ public class Production {
 
     // The amount of electricity produced, in MW
     @Column(name = "amount_produced")
-    private BigDecimal amountProduced;
+    @Builder.Default
+    private BigDecimal amountProduced = BigDecimal.ZERO;
 
     // The minimal retail value
     @Column(name = "minimal_retail_value")
-    private BigDecimal minimalRetailValue;
+    @Builder.Default
+    private BigDecimal minimalRetailValue = BigDecimal.ZERO;
 
     @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "time_block_id")
     private TimeBlock timeBlock;
 }
